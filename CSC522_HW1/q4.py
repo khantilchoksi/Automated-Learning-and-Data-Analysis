@@ -46,6 +46,19 @@ def gaussian_matrix(dim, mean, variance, dtype):
 		return [[random.gauss(mean, math.sqrt(variance)) for j in range(dim)] for i in range(dim)]
 
 
+def multiply(a, b):
+	result = [[0 for j in range(len(b[0]))] for i in range(len(a))]
+	for i in range(len(a)):
+		for j in range(len(b[0])):
+			for k in range(len(b)):
+				result[i][j] += a[i][k] * b[k][j]
+	return result
+
+
+def row_shift(mat):
+	return mat[1:] + [mat[0]]
+
+
 def main():
 	A = identity_matrix(5)
 	A = column_manipulate(A, 1, 3)
@@ -53,6 +66,9 @@ def main():
 	A = transpose(A)
 	row_diagonal_sum(A, 2)
 	B = gaussian_matrix(5, 5, 3, "int")
+	pprint(B)
+	C1 = multiply([[1,0,0,0,0]], row_shift(B))
+	pprint(C1)
 
 
 if __name__=='__main__':
