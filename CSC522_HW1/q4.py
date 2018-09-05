@@ -1,8 +1,12 @@
-from pprint import pprint
 import random
 import math
 import sys
 import os
+
+
+def pprint(mat):
+	pad = '{:>' + str(len(str(max([max(mat[i]) for i in range(len(mat))])))) + '}'
+	print('[' + '\n '.join(['[' + ', '.join([pad.format(mat[i][j]) for j in range(len(mat[0]))]) + ']' for i in range(len(mat))]) + ']')
 
 
 def identity_matrix(dim):
@@ -24,10 +28,11 @@ def matrix_sum(mat):
 
 
 def transpose(mat):
+	result = [[None for j in range(len(mat))] for i in range(len(mat[0]))]
 	for i in range(len(mat)):
-		for j in range(i+1, len(mat[i])):
-			mat[i][j], mat[j][i] = mat[j][i], mat[i][j]
-	return mat
+		for j in range(len(mat[i])):
+			result[j][i] = mat[i][j]
+	return result
 
 
 def row_diagonal_sum(mat, row):
@@ -46,7 +51,7 @@ def gaussian_matrix(dim, mean, variance, dtype):
 		return [[random.gauss(mean, math.sqrt(variance)) for j in range(dim)] for i in range(dim)]
 
 
-def multiply(a, b):
+def matrix_multiply(a, b):
 	result = [[0 for j in range(len(b[0]))] for i in range(len(a))]
 	for i in range(len(a)):
 		for j in range(len(b[0])):
@@ -55,20 +60,61 @@ def multiply(a, b):
 	return result
 
 
+def multiply(a, b):
+	result = [[0 for j in range(len(a[0]))] for i in range(len(a))]
+	for i in range(len(a)):
+		for j in range(len(a[0])):
+			result[i][j] = a[i][j] * b[i][j]
+	return result
+
+
+def add(a, b):
+	result = [[0 for j in range(len(a[0]))] for i in range(len(a))]
+	for i in range(len(a)):
+		for j in range(len(a[0])):
+			result[i][j] = a[i][j] + b[i][j]
+	return result
+
+
 def row_shift(mat):
 	return mat[1:] + [mat[0]]
 
 
 def main():
+	print('Q4 - (a)')
 	A = identity_matrix(5)
+	pprint(A)
+
+	print('\nQ4 - (b)')
 	A = column_manipulate(A, 1, 3)
-	matrix_sum(A)
+	pprint(A)
+
+	print('\nQ4 - (c)')
+	print(matrix_sum(A))
+
+	print('\nQ4 - (d)')
 	A = transpose(A)
-	row_diagonal_sum(A, 2)
+	pprint(A)
+
+	print('\nQ4 - (e)')
+	print(row_diagonal_sum(A, 2))
+
+	print('\nQ4 - (f)')
 	B = gaussian_matrix(5, 5, 3, "int")
 	pprint(B)
-	C1 = multiply([[1,0,0,0,0]], row_shift(B))
-	pprint(C1)
+
+	print('\nQ4 - (g)')
+	C1 = multiply(matrix_multiply([[1,0,0,0,0]]*5, row_shift(B)), identity_matrix(5))
+	C2 = matrix_multiply(matrix_multiply([[1,0,0,0,0], [0,0,0,0,0]], B), C1)
+	C3 = matrix_multiply([[0,0,0,0,0], [0,0,1,1,-1]], B)
+	C = add(C2, C3)
+	pprint(C)
+
+	print('\nQ4 - (h)')
+	D1 = multiply([[2,3,4,5,6]]*5, identity_matrix(5))
+	D = matrix_multiply(C, D1)
+	pprint(D)
+
 
 
 if __name__=='__main__':
