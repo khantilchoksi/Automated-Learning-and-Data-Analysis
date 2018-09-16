@@ -125,7 +125,7 @@ def main():
 	D = matrix_multiply(C, D1)
 	pprint(D)
 
-	print('\nQ4 - (g)')
+	print('\nQ4 - (i)')
 	print('X\tY\tZ')
 	print('-\t-\t-')
 	print('{}\t{}\t{}'.format(2, 6, 1))
@@ -141,7 +141,15 @@ def main():
 	print('Y\t{:0.2f}\t{:0.2f}\t{:0.2f}'.format(covariance(Y, X), covariance(Y, Y), covariance(Y, Z)))
 	print('Z\t{:0.2f}\t{:0.2f}\t{:0.2f}'.format(covariance(Z, X), covariance(Z, Y), covariance(Z, Z)))
 
-
+	print('\nQ4 - (j)')
+	x = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+	mean = sum(x)/len(x)
+	std = math.sqrt(sum([(y-mean)**2 for y in x])/len(x))
+	print('Mean - ' + str(mean))
+	print('Standard Deviation (sd) - ' + '{}'.format(std))
+	print('Mean of Squares - ' + '{}'.format(sum([y**2 for y in x])/len(x)))
+	print('Sum of square of mean (' + str(mean**2) + ') and square of standard deviation (' + str(std**2) + ') - ' + str(mean**2 + std**2))
+	print('NOTE - This is considering the sample is the population itself. Hence we use the \'Uncorrected sample standard deviation\'')
 
 
 if __name__=='__main__':
