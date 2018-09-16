@@ -80,6 +80,16 @@ def row_shift(mat):
 	return mat[1:] + [mat[0]]
 
 
+def covariance(x, y):
+	mean_x = sum(x)/len(x)
+	mean_y = sum(y)/len(y)
+	sumo = 0.0
+	for i in range(len(x)):
+		sumo += (x[i] - mean_x) * (y[i] - mean_y)
+	sumo /= (len(x) - 1)
+	return sumo
+
+
 def main():
 	print('Q4 - (a)')
 	A = identity_matrix(5)
@@ -114,6 +124,23 @@ def main():
 	D1 = multiply([[2,3,4,5,6]]*5, identity_matrix(5))
 	D = matrix_multiply(C, D1)
 	pprint(D)
+
+	print('\nQ4 - (g)')
+	print('X\tY\tZ')
+	print('-\t-\t-')
+	print('{}\t{}\t{}'.format(2, 6, 1))
+	print('{}\t{}\t{}'.format(4, 5, 3))
+	print('{}\t{}\t{}'.format(6, 4, 5))
+	print('{}\t{}\t{}'.format(8, 3, 7))
+	X = [2, 4, 6, 8]
+	Y = [6, 5, 4, 3]
+	Z = [1, 3, 5, 7]
+	print('\nCovariance Matrix')
+	print('\tX\tY\tZ')
+	print('X\t{:0.2f}\t{:0.2f}\t{:0.2f}'.format(covariance(X, X), covariance(X, Y), covariance(X, Z)))
+	print('Y\t{:0.2f}\t{:0.2f}\t{:0.2f}'.format(covariance(Y, X), covariance(Y, Y), covariance(Y, Z)))
+	print('Z\t{:0.2f}\t{:0.2f}\t{:0.2f}'.format(covariance(Z, X), covariance(Z, Y), covariance(Z, Z)))
+
 
 
 
