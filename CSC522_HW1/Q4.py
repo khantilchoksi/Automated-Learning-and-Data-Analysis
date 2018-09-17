@@ -36,12 +36,15 @@ def transpose(mat):
 
 
 def row_diagonal_sum(mat, row):
-	cnt=0
+	rowcnt = 0
+	dcnt = 0
 	for i in range(len(mat)):
 		for j in range(len(mat[i])):
-			if i==j or i==row:
-				cnt += mat[i][j]
-	return cnt
+			if i==j:
+				dcnt += mat[i][j]
+			if i==row:
+				rowcnt += mat[i][j]
+	return rowcnt, dcnt
 
 
 def gaussian_matrix(dim, mean, variance, dtype):
@@ -107,10 +110,12 @@ def main():
 	pprint(A)
 
 	print('\nQ4 - (e)')
-	print(row_diagonal_sum(A, 2))
+	rowcnt, dcnt = row_diagonal_sum(A, 2)
+	print('Sum of 3rd row - ' + str(rowcnt))
+	print('Sum of major diagonal - ' + str(dcnt))
 
 	print('\nQ4 - (f)')
-	B = gaussian_matrix(5, 5, 3, "int")
+	B = gaussian_matrix(5, 5, 3, "float")
 	pprint(B)
 
 	print('\nQ4 - (g)')
