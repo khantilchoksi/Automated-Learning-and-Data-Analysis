@@ -1,0 +1,21 @@
+﻿Vaso,MAP,SBP,Sepsis Shock
+FALSE,Low,High,Yes
+FALSE,Low,High,Yes
+FALSE,Low,High,Yes
+FALSE,Low,High,No
+TRUE,High,High,Yes
+FALSE,Low,Low,Yes
+FALSE,Low,Low,Yes
+FALSE,Low,Low,Yes
+FALSE,Low,Low,Yes
+TRUE,Low,Low,Yes
+FALSE,High,Low,Yes
+FALSE,Low,Normal,Yes
+FALSE,Low,Normal,Yes
+FALSE,Low,Normal,No
+FALSE,Low,Normal,No
+FALSE,Low,Normal,No
+FALSE,Low,Normal,No
+TRUE,High,Normal,Yes
+FALSE,Low,Very High,Yes
+TRUE,Low,Very High,Yes
