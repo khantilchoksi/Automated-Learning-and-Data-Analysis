@@ -1,0 +1,56 @@
+digraph ID3_Tree {
+"0" [shape=box, style=filled, label="tear production rate
+", weight=1]
+"1" [shape=box, style=filled, label="patient age
+", weight=2]
+0 -> 1 [ label = "normal"];
+"2" [shape=box, style=filled, label="spectacle prescription
+", weight=3]
+1 -> 2 [ label = "pre-presbyopic"];
+"3" [shape=box, style=filled, label="astigmatic
+", weight=4]
+2 -> 3 [ label = "hypermetrope"];
+"4" [shape=box, style=filled, label="Yes
+(1)
+", weight=5]
+3 -> 4 [ label = "no"];
+"5" [shape=box, style=filled, label="No
+(1)
+", weight=5]
+3 -> 5 [ label = "yes"];
+"6" [shape=box, style=filled, label="Yes
+(1)
+", weight=4]
+2 -> 6 [ label = "myope"];
+"7" [shape=box, style=filled, label="spectacle prescription
+", weight=3]
+1 -> 7 [ label = "presbyopic"];
+"8" [shape=box, style=filled, label="astigmatic
+", weight=4]
+7 -> 8 [ label = "hypermetrope"];
+"9" [shape=box, style=filled, label="Yes
+(1)
+", weight=5]
+8 -> 9 [ label = "no"];
+"10" [shape=box, style=filled, label="No
+(1)
+", weight=5]
+8 -> 10 [ label = "yes"];
+"11" [shape=box, style=filled, label="No
+(1)
+", weight=4]
+7 -> 11 [ label = "myope"];
+"12" [shape=box, style=filled, label="Yes
+(4)
+", weight=3]
+1 -> 12 [ label = "young"];
+"13" [shape=box, style=filled, label="No
+(10)
+", weight=2]
+0 -> 13 [ label = "reduced"];
+{rank=same; 0;};
+{rank=same; 1;13;};
+{rank=same; 2;7;12;};
+{rank=same; 3;6;8;11;};
+{rank=same; 4;5;9;10;};
+}

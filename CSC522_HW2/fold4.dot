@@ -1,0 +1,30 @@
+digraph ID3_Tree {
+"0" [shape=box, style=filled, label="tear production rate
+", weight=1]
+"1" [shape=box, style=filled, label="spectacle prescription
+", weight=2]
+0 -> 1 [ label = "normal"];
+"2" [shape=box, style=filled, label="astigmatic
+", weight=3]
+1 -> 2 [ label = "hypermetrope"];
+"3" [shape=box, style=filled, label="Yes
+(3)
+", weight=4]
+2 -> 3 [ label = "no"];
+"4" [shape=box, style=filled, label="No
+(2)
+", weight=4]
+2 -> 4 [ label = "yes"];
+"5" [shape=box, style=filled, label="Yes
+(5)
+", weight=3]
+1 -> 5 [ label = "myope"];
+"6" [shape=box, style=filled, label="No
+(9)
+", weight=2]
+0 -> 6 [ label = "reduced"];
+{rank=same; 0;};
+{rank=same; 1;6;};
+{rank=same; 2;5;};
+{rank=same; 3;4;};
+}
